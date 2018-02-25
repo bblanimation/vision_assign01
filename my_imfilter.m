@@ -34,11 +34,12 @@ function output = my_imfilter(image, filter)
 % Your code here
 %%%%%%%%%%%%%%%%
 
+image  % print image
+
 final_im = zeros(size(image, 1), size(image, 2));
 
-f_size = [int32((size(filter, 1) - 1) / 2), int32((size(filter, 2) - 1) / 2)];
-image = padarray(image, [f_size f_size], 'replicate', 'both');
 im_size = [size(image, 1), size(image, 2)];
+f_size = [int32((size(filter, 1) - 1) / 2), int32((size(filter, 2) - 1) / 2)];
 
 % iterate through locations in matrix
 for i= f_size(1) + 1:im_size(1) - f_size(1)
@@ -75,17 +76,5 @@ for i= f_size(1) + 1:im_size(1) - f_size(1)
   endfor
 endfor
 
-% set idx1/idx2
-if f_size(1) == 0
-  idx1 = 1;
-else
-  idx1 = f_size(1);
-end
-if f_size(2) == 0
-  idx2 = 1;
-else
-  idx2 = f_size(2);
-end
 % store final image to output variable
-output = final_im
-% output = final_im(idx1:im_size(1)-idx1, idx2:im_size(2)-idx2) %, 1:size(final_im, 3));
+output = final_im;
